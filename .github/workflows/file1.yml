@@ -46,3 +46,17 @@ jobs:
           brew install fribidi
           brew install libgit2
         if: ${{ matrix.os == 'macos-latest' && matrix.R.using_R == 'Yes' }}
+      - name: Install cookiecutter
+        run: |
+          if [ "$RUNNER_OS" == "Linux" ]; then
+            # TODO: Add pip alternative, as Ubuntu 20.04LTS not currently supported (June 2021)
+            sudo apt-get install cookiecutter || pip install cookiecutter
+          elif [ "$RUNNER_OS" == "macOS" ]; then
+            brew install cookiecutter
+          elif [ "$RUNNER_OS" == "Windows" ]; then
+            pip install cookiecutter
+          else
+            echo "$RUNNER_OS not supported"
+            exit 1
+          fi;
+        shell: bash
