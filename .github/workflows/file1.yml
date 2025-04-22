@@ -1,0 +1,6 @@
+name: govcookiecutter template build
+
+on:
+  push:
+    branches:
+      - workflow_tests
