@@ -4,3 +4,9 @@ on:
   push:
     branches:
       - workflow_tests
+jobs:
+  template-build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
