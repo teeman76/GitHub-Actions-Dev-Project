@@ -30,3 +30,13 @@ jobs:
         with:
           R-version: ${{ matrix.R.version }}
         if: ${{ matrix.R.using_R == 'Yes' }}
+      - name: Install other ${{ matrix.os }} R dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install libcurl4-openssl-dev
+          sudo apt-get install libgit2-dev
+          sudo apt-get install libharfbuzz-dev
+          sudo apt-get install libfribidi-dev
+          sudo apt -y install libfontconfig1-dev
+          sudo apt-get install libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+        if: ${{ matrix.os == 'ubuntu-latest' && matrix.R.using_R == 'Yes' }}
