@@ -40,3 +40,9 @@ jobs:
           sudo apt -y install libfontconfig1-dev
           sudo apt-get install libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
         if: ${{ matrix.os == 'ubuntu-latest' && matrix.R.using_R == 'Yes' }}
+      - name: Install extra macos R dependencies
+        run: |
+          brew install harfbuzz
+          brew install fribidi
+          brew install libgit2
+        if: ${{ matrix.os == 'macos-latest' && matrix.R.using_R == 'Yes' }}
